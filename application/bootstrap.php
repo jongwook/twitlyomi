@@ -101,9 +101,9 @@ Kohana::modules(array(
 	// 'auth'       => MODPATH.'auth',       // Basic authentication
 	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
 	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	// 'database'   => MODPATH.'database',   // Database access
-	// 'image'      => MODPATH.'image',      // Image manipulation
-	// 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
+	 'database'   => MODPATH.'database',   // Database access
+	 'image'      => MODPATH.'image',      // Image manipulation
+	 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
 	// 'unittest'   => MODPATH.'unittest',   // Unit testing
 	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
 	));
@@ -112,8 +112,37 @@ Kohana::modules(array(
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'welcome',
-		'action'     => 'index',
+Route::set('list', 'page/<page>', array(
+		'page'         => '\d+',
+	))->defaults(array(
+		'controller' => 'list',
+		'action'     => 'page',
+		'page'         => 1,
 	));
+	
+Route::set('archive', 'archive/<year>(<month>(<day>))', array(
+		'year'       => '\d{4}',
+		'month'      => '(0[1-9]|1[012])',
+		'day'        => '([012][1-9]|3[01])',
+	))->defaults(array(
+		'controller' => 'list',
+		'action'     => 'archive',
+		'month'      => 0,
+		'day'        => 0,
+	));
+	
+Route::set('search', 'search/<keyword>')
+	->defaults(array(
+		'controller' => 'list',
+		'action'     => 'search',
+	));
+
+
+Route::set('default', '(<url>)',array(
+		'url'        => '.+',
+	))->defaults(array(
+		'controller' => 'common',
+		'action'     => 'notfound',
+	));
+	
+
