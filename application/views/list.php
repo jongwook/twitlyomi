@@ -1,9 +1,5 @@
-<!doctype html>
-<head>
-<title>twit.lyomi.net</title>
-<link rel="stylesheet" type="style/css" href="/css/style.css" />
-</head>
-<body>
+<? echo View::factory('head'); ?>
+
 <? foreach($tweets as $tweet): ?>
 <div class="tweet">
 	<?=$tweet->text?><br />
@@ -17,5 +13,5 @@
 		<? endforeach; ?>
 	</div>
 </div>
-</body>
-</html>
+
+<? echo View::factory('foot'); ?>
