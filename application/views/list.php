@@ -9,5 +9,12 @@
 	<?=$tweet->text?>
 </div>
 <? endforeach; ?>
+<div class="bottom">
+	<div class="pages">
+		<? foreach($pages as $p): ?>
+			<a href="<?=$p[0]?>"><?=$p[1]?></a>
+		<? endforeach; ?>
+	</div>
+</div>
 </body>
 </html>

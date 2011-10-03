@@ -8,5 +8,28 @@ body {
     width: 600px;
     margin:auto;
     padding: 15px;
-    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+}
+
+a {
+    text-decoration:none;
+    color:#666;
+}
+
+a:hover {
+    color:#999;
+}
+
+.bottom {
+    width: 600px;
+    margin: auto;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    text-align: center;
+    font-size: 11pt;
+}
+
+.bottom a {
+    display: inline-block;
+    padding: 10px;
 }

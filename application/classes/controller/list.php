@@ -42,12 +42,12 @@ class Controller_List extends Controller_Common {
 		$pages = array();
 		for($p = max($this->page-5,1); $p <= $this->page+5; $p++) {
 			if($p==$this->page) {
-
+				$pages[] = array('#','<b>['.$p.']</b>');
 			} else {
-			
+				$pages[] = array('/page/'.$p,'['+$p+']');
 			}
 		}
-		$view->bind('page', $pages);
+		$view->bind('pages', $pages);
 		
 		$this->response->body($view);
 	}
