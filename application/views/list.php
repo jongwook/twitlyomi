@@ -6,7 +6,8 @@
 <body>
 <? foreach($tweets as $tweet): ?>
 <div class="tweet">
-	<?=$tweet->text?>
+	<?=$tweet->text?><br />
+	<span class="date"><?=date("Y-m-d H:i:s T",$tweet->created_at);?></span>
 </div>
 <? endforeach; ?>
 <div class="bottom">

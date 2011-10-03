@@ -8,6 +8,8 @@ class Controller_Common extends Controller {
 		foreach($params as $key=>$value) {
 			$this->$key = $value;
 		}
+		
+		date_default_timezone_set('America/New_York');
 	}
 	
 	public function action_notfound() {
