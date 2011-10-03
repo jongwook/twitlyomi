@@ -21,4 +21,4 @@ class Controller_Common extends Controller {
 		$this->response->status($status);
 		$this->response->body('error : '.$msg);
 	}
-} // End Welcome
+} // End Common
