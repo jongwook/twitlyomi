@@ -140,6 +140,12 @@ Route::set('search', 'search/<keyword>(/<page>)', array(
 		'action'     => 'search',
 		'page'       => 1,
 	));
+	
+Route::set('robots', 'robots.txt')
+	->defaults(array(
+		'controller' => 'common',
+		'action'     => 'robots',
+	));
 
 
 Route::set('default', '(<url>)',array(

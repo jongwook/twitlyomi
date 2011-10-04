@@ -18,6 +18,11 @@ class Controller_Common extends Controller {
 		$this->error($msg, $status);
 	}
 	
+	public function action_robots() {
+		$this->response->headers('Content-type','text/plain');
+		$this->response->body("User-Agent: *\nDisallow: /\n");
+	}
+	
 	public function error($msg, $status=200) {
 		// TODO : make and load an error view
 		$this->response->status($status);
