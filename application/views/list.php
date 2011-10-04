@@ -5,14 +5,19 @@
 <? echo View::factory('sidebar'); ?>
 
 <div id="content">
-	<div id="stat">
-		total <?=$total?> tweets
+	<div id="top">
+		<div id="desc">
+			<?=$desc?>
+		</div>
+		<div id="stat">
+			total <?=$total?> tweets
+		</div>
 	</div>
 	<? foreach($tweets as $tweet): ?>
 	<div class="tweet">
 		<?=$tweet->text?><br />
 		<div class="date">
-			<?=date("Y-m-d",$tweet->created_at);?>
+			<?=date("Y.m.d",$tweet->created_at);?>
 			<? if($tweet->source): ?>
 				via <?=strip_tags($tweet->source)?>
 			<? endif; ?>

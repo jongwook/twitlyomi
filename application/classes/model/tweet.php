@@ -43,6 +43,14 @@ class Model_Tweet extends ORM {
 		);
 	}
 	
+	public function get_public($limit, $offset)
+	{
+		$tweets = $this->order_by('created_at','desc')->where('text','not regexp','^@.+')
+						->limit($limit)->offset($offset)->find_all();
+		$count = $this->where('text','not regexp','^@.+')->find_all()->count();
+		return array($tweets, $count);
+	}
+	
 	public function get_list($limit, $offset)
 	{
 		$tweets = $this->order_by('created_at','desc')->limit($limit)->offset($offset)->find_all();
@@ -56,8 +64,7 @@ class Model_Tweet extends ORM {
 						->where('created_at','>=',$since)->where('created_at','<',$until)
 						->limit($limit)->offset($offset)->find_all();
 						
-		$count = $this->order_by('created_at','desc')
-						->where('created_at','>=',$since)->where('created_at','<',$until)
+		$count = $this->where('created_at','>=',$since)->where('created_at','<',$until)
 						->find_all()->count();
 						
 		return array($tweets, $count);
@@ -68,7 +75,7 @@ class Model_Tweet extends ORM {
 		$tweets = $this->order_by('created_at','desc')->where('text','regexp',$keyword)
 						->limit($limit)->offset($offset)->find_all();
 		
-		$count = $this->order_by('created_at','desc')->where('text','regexp',$keyword)->find_all()->count();
+		$count = $this->where('text','regexp',$keyword)->find_all()->count();
 		
 		return array($tweets, $count);
 	}
