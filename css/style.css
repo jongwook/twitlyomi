@@ -6,12 +6,12 @@ body {
 }
 
 #body {
-    width: 800px;
+    width: 820px;
     margin: auto;
 }
 
 #sidebar {
-    width: 150px;
+    width: 170px;
     float: left;
     border-right: 1px dashed #ddd;
 }
@@ -45,6 +45,8 @@ body {
 }
 
 .calendar-week {
+    width: 150px;
+    margin: auto;
     clear: both;
 }
 
