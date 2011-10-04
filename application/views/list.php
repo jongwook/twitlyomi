@@ -5,10 +5,13 @@
 <? echo View::factory('sidebar'); ?>
 
 <div id="content">
+	<div id="stat">
+		total <?=$total?> tweets
+	</div>
 	<? foreach($tweets as $tweet): ?>
 	<div class="tweet">
-		<?=htmlspecialchars($tweet->text)?><br />
-		<span class="date">
+		<?=$tweet->text?><br />
+		<div class="date">
 			<?=date("Y-m-d",$tweet->created_at);?>
 			<? if($tweet->source): ?>
 				via <?=strip_tags($tweet->source)?>
@@ -16,14 +19,14 @@
 			<? if($tweet->in_reply_to_screen_name): ?>
 				in reply to 
 				<? if($tweet->in_reply_to_status_id): ?>
-					<a href="https://twitter.com/#!/<?=$tweet->in_reply_to_screen_name?>/status/<?=$tweet->in_reply_to_status_id?>">
+					<a href="https://twitter.com/#!/<?=$tweet->in_reply_to_screen_name?>/status/<?=$tweet->in_reply_to_status_id?>" target="blank">
 						<?=$tweet->in_reply_to_screen_name?>
 					</a>
 				<? else: ?>
 				<?=$tweet->in_reply_to_screen_name?>
 				<? endif; ?>
 			<? endif; ?>
-		</span>
+		</div>
 	</div>
 	<? endforeach; ?>
 	

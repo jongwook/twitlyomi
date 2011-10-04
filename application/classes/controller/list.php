@@ -81,6 +81,7 @@ class Controller_List extends Controller_Common {
 			$pages[] = array($prefix.$p,($p==$this->page)?'<b>['.$p.']</b>':$p);
 		}
 		$view->bind('pages', $pages);
+		$view->bind('total', $tweets[1]);
 		
 		$this->response->body($view);
 	}
