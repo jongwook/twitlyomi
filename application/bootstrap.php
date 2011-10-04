@@ -120,21 +120,24 @@ Route::set('list', '(page/<page>)', array(
 		'page'         => 1,
 	));
 	
-Route::set('archive', 'archive/<year>(<month>(<day>))', array(
-		'year'       => '\d{4}',
+Route::set('archive', 'archive/<year>(<month>(<day>))(/<page>)', array(
+		'year'       => '20\d{2}',
 		'month'      => '(0[1-9]|1[012])',
-		'day'        => '([012][1-9]|3[01])',
+		'day'        => '([012][1-9]|[12]0|3[01])',
+		'page'       => '\d+',
 	))->defaults(array(
 		'controller' => 'list',
 		'action'     => 'archive',
 		'month'      => 0,
 		'day'        => 0,
+		'page'       => 1,
 	));
 	
 Route::set('search', 'search/<keyword>')
 	->defaults(array(
 		'controller' => 'list',
 		'action'     => 'search',
+		'page'       => 1,
 	));
 
 
