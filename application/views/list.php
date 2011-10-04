@@ -46,11 +46,5 @@
 
 </div>
 
-<div id="foot">
-	<div id="copyright">
-	Copyright <?=date("Y")?> Jong Wook Kim<br />
-	All Right Reserved
-	</div>
-</div>
 
 <? echo View::factory('foot'); ?>
