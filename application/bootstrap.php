@@ -133,8 +133,9 @@ Route::set('archive', 'archive/<year>(<month>(<day>))(/<page>)', array(
 		'page'       => 1,
 	));
 	
-Route::set('search', 'search/<keyword>')
-	->defaults(array(
+Route::set('search', 'search/<keyword>(/<page>)', array(
+		'page'       => '\d+',
+	))->defaults(array(
 		'controller' => 'list',
 		'action'     => 'search',
 		'page'       => 1,
