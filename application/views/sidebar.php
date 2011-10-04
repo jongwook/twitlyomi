@@ -3,6 +3,8 @@
 	<div id="title"><a href="/">Home</a></div>
 	<div id="calendar">
 		<div id="calendar-title">Calendar</div>
+		<? echo View::factory('calendar')->set('offset',-1); ?>
+		<? echo View::factory('calendar'); ?>
 	</div>
 	<div id="archive">
 		<div id="archive-title">Archive</div>

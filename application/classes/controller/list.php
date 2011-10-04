@@ -52,7 +52,7 @@ class Controller_List extends Controller_Common {
 			}
 			$query .= $this->month.$this->day;
 			$date = mktime(0,0,0,$this->month,$this->day,$this->year);
-			$desc = 'Tweets on '.date('D j F Y', $date);
+			$desc = date('D j F Y', $date);
 			$pages = array();
 			$pages[] = array('/archive/'.date('Ymd',$date+86400), '&lt;&lt;');
 			$pages[] = array('/archive/'.date('Ymd',$date), date('Y.m.d',$date));
