@@ -86,7 +86,7 @@ class Model_Tweet extends ORM {
 		foreach($tweets as $tweet) {
 			$text = $tweet->text;
 			$text = $links->expand($text);
-			$text = preg_replace('@(https?://([-\w\.]+)+(:\d+)?(/([\w/_\.%]*(\?\S+)?)?)?)@', 
+			$text = preg_replace('@(https?://([-\w\.]+)+(:\d+)?(/([\w/_\-\.%]*(\?\S+)?)?)?)@', 
 									'<a href="$1" target="_blank">$1</a>', $text);
 			$tweet->set('text', $text);
 			$result[] = $tweet;
