@@ -10,7 +10,6 @@ class Model_Tweet extends ORM {
 			array('not_empty'),
 			array('min_length', array(':value', 4)),
 			array('max_length', array(':value', 64)),
-			array('regex', array(':value', '\d+')),
 		),
 		'text' => array(
 			array('not_empty'),
@@ -48,7 +47,7 @@ class Model_Tweet extends ORM {
 		$tweets = $this->order_by('created_at','desc')->where('text','not regexp','^@.+')
 						->limit($limit)->offset($offset)->find_all();
 		$count = $this->where('text','not regexp','^@.+')->find_all()->count();
-		return array($tweets, $count);
+		return array($this->format($tweets), $count);
 	}
 	
 	public function get_list($limit, $offset)
@@ -66,8 +65,8 @@ class Model_Tweet extends ORM {
 						
 		$count = $this->where('created_at','>=',$since)->where('created_at','<',$until)
 						->find_all()->count();
-						
-		return array($tweets, $count);
+		
+		return array($this->format($tweets), $count);
 	}
 	
 	public function get_search($keyword, $limit, $offset)
@@ -77,7 +76,22 @@ class Model_Tweet extends ORM {
 		
 		$count = $this->where('text','regexp',$keyword)->find_all()->count();
 		
-		return array($tweets, $count);
+		return array($this->format($tweets), $count);
+	}
+	
+	public function format($tweets)
+	{
+		$links = ORM::factory('link');
+		$result = array();
+		foreach($tweets as $tweet) {
+			$text = $tweet->text;
+			$text = $links->expand($text);
+			$text = preg_replace('@(https?://([-\w\.]+)+(:\d+)?(/([\w/_\.%]*(\?\S+)?)?)?)@', 
+									'<a href="$1" target="_blank">$1</a>', $text);
+			$tweet->set('text', $text);
+			$result[] = $tweet;
+		}
+		return $result;
 	}
 
 } // End Tweet

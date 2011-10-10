@@ -57,6 +57,7 @@ class Controller_List extends Controller_Common {
 			$pages[] = array('/archive/'.date('Ymd',$date+86400), '&lt;&lt;');
 			$pages[] = array('/archive/'.date('Ymd',$date), date('Y.m.d',$date));
 			$pages[] = array('/archive/'.date('Ymd',$date-86400), '&gt;&gt;');
+			$this->limit = 1000;
 		}
 		$since = strtotime($this->year.'/'.$this->month.'/'.$this->day);
 		$until = strtotime($untilyear.'/'.$untilmonth.'/'.$untilday);
