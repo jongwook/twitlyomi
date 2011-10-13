@@ -19,6 +19,12 @@ class Controller_List extends Controller_Common {
 		$tweets = ORM::factory('tweet')->get_public($this->limit, $this->offset);
 		$this->render($tweets,'/page/','Tweets');
 	}
+	
+	public function action_favorite()
+	{
+		$tweets = ORM::factory('favorite')->get_public($this->limit, $this->offset);
+		$this->render($tweets,'/favorites/','Favorites');
+	}
 
 	public function action_archive()
 	{

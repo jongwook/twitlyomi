@@ -1,6 +1,7 @@
 
 <div id="sidebar">
 	<div id="title"><a href="/">Home</a></div>
+	<div id="favorites"><a href="/favorites/">Favorites</a></div>
 	<div id="calendar">
 		<div id="calendar-title">Calendar</div>
 		<? echo View::factory('calendar')->set('offset',-1); ?>

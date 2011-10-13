@@ -15,6 +15,9 @@
 	</div>
 	<? foreach($tweets as $tweet): ?>
 	<div class="tweet">
+		<? if(isset($tweet->screen_name)): ?>
+			<b><?=$tweet->screen_name?></b>
+		<? endif; ?>
 		<?=$tweet->text?><br />
 		<div class="date">
 			<?=date("Y.m.d",$tweet->created_at);?>

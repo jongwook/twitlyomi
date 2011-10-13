@@ -21,6 +21,13 @@ body {
     margin:10px 10px 10px 0px;
 }
 
+#favorites {
+    font-weight: bold;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #ddd;
+}
+
 #calendar {
     padding-bottom: 10px;
 }

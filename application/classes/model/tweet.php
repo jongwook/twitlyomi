@@ -14,7 +14,7 @@ class Model_Tweet extends ORM {
 		'text' => array(
 			array('not_empty'),
 			array('min_length', array(':value', 0)),
-			array('max_length', array(':value', 500)),
+			array('max_length', array(':value', 512)),
 		),
 		'created_at' => array(
 			array('not_empty'),
@@ -37,7 +37,7 @@ class Model_Tweet extends ORM {
 		'source' => array(
 			array('not_empty'),
 			array('min_length', array(':value', 4)),
-			array('max_length', array(':value', 512)),
+			array('max_length', array(':value', 128)),
 		),
 		);
 	}
