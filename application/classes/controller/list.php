@@ -22,7 +22,7 @@ class Controller_List extends Controller_Common {
 	
 	public function action_favorite()
 	{
-		$tweets = ORM::factory('favorite')->get_public($this->limit, $this->offset);
+		$tweets = ORM::factory('favorite')->get_list($this->limit, $this->offset);
 		$this->render($tweets,'/favorites/','Favorites');
 	}
 

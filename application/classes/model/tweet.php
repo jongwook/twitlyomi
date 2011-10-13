@@ -54,7 +54,7 @@ class Model_Tweet extends ORM {
 	{
 		$tweets = $this->order_by('created_at','desc')->limit($limit)->offset($offset)->find_all();
 		$count = $this->find_all()->count();
-		return array($tweets, $count);
+		return array($this->format($tweets), $count);
 	}
 	
 	public function get_archive($since, $until, $limit, $offset)
@@ -92,6 +92,7 @@ class Model_Tweet extends ORM {
 			$tweet->set('text', $text);
 			$result[] = $tweet;
 		}
+		
 		return $result;
 	}
 

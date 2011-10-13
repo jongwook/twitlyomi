@@ -25,6 +25,7 @@ class Model_Favorite extends Model_Tweet {
 			$screen_name = preg_replace('@(.*)@','<a href="http://twitter.com/$1" target="_blank">$1</a>', $screen_name);
 			$tweet->set('screen_name', $screen_name);
 		}
+		
 		return $result;
 	}
 
