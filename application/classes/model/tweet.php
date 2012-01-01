@@ -42,6 +42,12 @@ class Model_Tweet extends ORM {
 		);
 	}
 	
+	public function get_tweet($id)
+	{
+		$tweets = $this->where('id','=',$id)->find_all();
+		return $tweets[0];
+	}
+	
 	public function get_public($limit, $offset)
 	{
 		$tweets = $this->order_by('created_at','desc')->where('text','not regexp','^@.+')

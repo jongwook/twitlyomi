@@ -7,13 +7,11 @@
 <div id="content">
 	<div id="top">
 		<div id="desc">
-			<?=$desc?>
 		</div>
 		<div id="stat">
-			total <?=$total?> tweets
 		</div>
 	</div>
-	<? foreach($tweets as $tweet): ?>
+	
 	<div class="tweet">
 		<? if(isset($tweet->screen_name)): ?>
 			<b><?=$tweet->screen_name?></b>
@@ -38,13 +36,9 @@
 			<? endif; ?>
 		</div>
 	</div>
-	<? endforeach; ?>
 	
 	<div id="bottom">
 		<div id="pages">
-			<? foreach($pages as $p): ?>
-				<a href="<?=$p[0]?>"><?=$p[1]?></a>
-			<? endforeach; ?>
 		</div>
 	</div>
 </div>

@@ -113,13 +113,20 @@ Kohana::modules(array(
  * defaults for the URI.
  */
 Route::set('list', '(page/<page>)', array(
-		'page'         => '\d+',
+		'page'       => '\d+',
 	))->defaults(array(
 		'controller' => 'list',
 		'action'     => 'page',
 		'page'         => 1,
 	));
-	
+
+Route::set('tweet', 'tweet/<id>', array(
+		'id'		 => '\d+',
+	))->defaults(array(
+		'controller' => 'tweet',
+		'action'	 => 'view'
+	));
+
 Route::set('archive', 'archive/<year>(<month>(<day>))(/<page>)', array(
 		'year'       => '20\d{2}',
 		'month'      => '(0[1-9]|1[012])',
