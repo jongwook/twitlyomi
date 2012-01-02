@@ -18,9 +18,7 @@
 		<? endif; ?>
 		<?=$tweet->text?><br />
 		<div class="date">
-			<a href="/tweet/<?=$tweet->id?>">
-				<?=date("Y.m.d",$tweet->created_at);?>
-			</a>
+			<a href="http://twitter.com/lyomi/status/<?=$tweet->id?>"><?=date("Y.m.d",$tweet->created_at);?></a> 
 			<? if($tweet->source): ?>
 				via <?=strip_tags($tweet->source)?>
 			<? endif; ?>
