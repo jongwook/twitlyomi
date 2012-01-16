@@ -32,7 +32,9 @@ class Model_Link extends ORM {
 	
 	public function getURL($short) 
 	{
-		return $this->where('short','=',$short[0])->find()->full;
+		$link = $this->where('short','=',$short[0])->find()->full;
+		if(!$link) $link = $short[0];
+		return $link;
 	}
 
 } // End Link
