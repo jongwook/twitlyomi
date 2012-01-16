@@ -155,6 +155,14 @@ Route::set('favorites', 'favorites(/<page>)', array(
 		'action'     => 'favorite',
 		'page'       => 1,
 	));
+	
+Route::set('favorite_search', 'favorites/search/<keyword>(/<page>)', array(
+		'page'       => 'd+',
+	))->defaults(array(
+		'controller' => 'list',
+		'action'     => 'favorite_search',
+		'page'       => 1,
+	));
 
 Route::set('robots', 'robots.txt')
 	->defaults(array(

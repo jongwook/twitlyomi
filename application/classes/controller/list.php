@@ -80,6 +80,13 @@ class Controller_List extends Controller_Common {
 		$this->render($tweets, '/search/'.$this->keyword.'/', $desc);
 	}
 	
+	public function action_favorite_search()
+	{
+		$tweets = ORM::factory('favorite')->get_search($this->keyword, $this->limit, $this->offset);
+		$desc = 'Search result for '.$this->keyword;
+		$this->render($tweets, '/favorite/search/'.$this->keyword.'/', $desc);
+	}
+	
 	public function render($tweets, $prefix='/page/', $desc='', $pages=NULL)
 	{
 		$view = View::factory('list');
