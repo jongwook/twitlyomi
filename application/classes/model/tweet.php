@@ -45,6 +45,7 @@ class Model_Tweet extends ORM {
 	public function get_tweet($id)
 	{
 		$tweets = $this->where('id','=',$id)->find_all();
+		$tweets = $this->format($tweets);
 		return $tweets[0];
 	}
 	
