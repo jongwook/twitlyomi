@@ -163,6 +163,15 @@ Route::set('favorite_search', 'favorites/search/<keyword>(/<page>)', array(
 		'action'     => 'favorite_search',
 		'page'       => 1,
 	));
+	
+Route::set('favorite_search_fallback', 'favorites/(<keyword>)', array(
+		'keyword'       => '.+',
+	))->defaults(array(
+		'controller' => 'list',
+		'action'     => 'favorite_search',
+		'page'       => 1,
+	));
+
 
 Route::set('robots', 'robots.txt')
 	->defaults(array(
@@ -171,11 +180,12 @@ Route::set('robots', 'robots.txt')
 	));
 
 
-Route::set('default', '(<url>)',array(
-		'url'        => '.+',
+Route::set('search_fallback', '(<keyword>)',array(
+		'keyword'    => '.+',
 	))->defaults(array(
-		'controller' => 'common',
-		'action'     => 'notfound',
+		'controller' => 'list',
+		'action'     => 'search',
+		'page'       => 1,
 	));
 	
 
